@@ -6,13 +6,16 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 08:25:50 by aguyon            #+#    #+#             */
-/*   Updated: 2022/12/14 09:39:22 by aguyon           ###   ########.fr       */
+/*   Updated: 2022/12/14 15:44:48 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printchar(void *c)
+int	ft_printchar(va_list ap)
 {
-	return (write(1, c, 1));
+	int c;
+
+	c = va_arg(ap, int);
+	return (write(1, &c, 1));
 }

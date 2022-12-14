@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printstr.c                                      :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/14 08:31:45 by aguyon            #+#    #+#             */
-/*   Updated: 2022/12/14 14:45:35 by aguyon           ###   ########.fr       */
+/*   Created: 2022/11/07 13:35:49 by aguyon            #+#    #+#             */
+/*   Updated: 2022/12/14 15:57:39 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printstr(va_list ap)
+size_t	ft_strlen(const char *s)
 {
-	char	*str;
+	size_t	i;
 
-	str = va_arg(ap, char *);
-	if (!str)
-		return (write(1, "(null)", 6));
-	return (write(1, str, ft_strlen(str)));
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

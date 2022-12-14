@@ -6,13 +6,13 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 09:04:29 by aguyon            #+#    #+#             */
-/*   Updated: 2022/12/14 09:22:29 by aguyon           ###   ########.fr       */
+/*   Updated: 2022/12/14 14:48:31 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printsigned(void *n)
+int	ft_printsigned(va_list ap)
 {
-	return (ft_printbase((intptr_t)n, "0123456789"));
+	return (ft_printbase((intptr_t)va_arg(ap, int), "0123456789"));
 }

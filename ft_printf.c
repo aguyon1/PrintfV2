@@ -6,38 +6,36 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 21:46:23 by aguyon            #+#    #+#             */
-/*   Updated: 2022/12/14 09:45:17 by aguyon           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:38:58 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	ft_printf(const char *format, ...)
 {
 	va_list		ap;
-	void	*array[] = {&ft_printchar, &ft_printstr, &ft_printmemory, &ft_printsigned, &ft_printsigned,&ft_printunsigned, &ft_printhexa_lower, &ft_printhexa_upper, &ft_printchar};
-	size_t		i;
+	const void	*array[] = {&ft_printchar, &ft_printstr,
+		&ft_printmemory, &ft_printsigned, &ft_printsigned, &ft_printunsigned,
+		&ft_printhexa_lower, &ft_printhexa_upper, &😋};
+	char		*str;
 	int			count;
-	char *conversions;
+	char		*conv;
 
 	va_start(ap, format);
+	str = (char *)format;
 	count = 0;
-	i = 0;
-	conversions = "cspdiuxX%";
-	while (format[i])
+	conv = "cspdiuxX%";
+	while (*str)
 	{
-		if (format[i++] == '%' && ft_strchr(conversions, format[i]))
-			count += (((ptr_fun) array[1])(va_arg(ap, void *)));
+		if (*str == '%' && ft_strchr(conv, *(str + 1)) && *(str + 1))
+		{
+			count += ((t_fun) array[ft_strchr(conv, *++str) - conv])(ap);
+			str++;
+		}
 		else
-			count += ft_printchar((void *)(intptr_t)(format[i++]));
+			count += write(1, str++, 1);
 	}
 	va_end(ap);
 	return (count);
-}
-/*ft_strchr(conversions, format[i++]) - conversions*/
-int main(void)
-{
-	ft_printf("Salut");
-	return (0);
 }

@@ -6,28 +6,30 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 21:46:27 by aguyon            #+#    #+#             */
-/*   Updated: 2022/12/14 09:36:02 by aguyon           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:38:24 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
-#define FT_PRINTF_H
+# define FT_PRINTF_H
 
-#include "Libft/libft.h"
-#include <stdarg.h>
-#include <stdio.h> //delete
+# include "Libft/libft.h"
+# include <stdarg.h>
+# include <stdio.h> //delete
 
-typedef int (*ptr_fun)(void *);
+typedef int	(*t_fun)(va_list );
 
-/*intptr_t represents a signed integer where the bit-width is the same as a pointer*/
+char	*ft_strchr(const char *s, int c);
+size_t	ft_strlen(const char *s);
 int	ft_printf(const char *format, ...);
-int	ft_printchar(void *c);
-int	ft_printstr(void *str);
-int	ft_printbase(intptr_t n, char *base);
-int	ft_printmemory(void *address);
-int	ft_printsigned(void *n);
-int	ft_printunsigned(void *u);
-int	ft_printhexa_lower(void *x);
-int	ft_printhexa_upper(void *x);
+int	ft_printchar(va_list ap);
+int	ft_printstr(va_list ap);
+int	ft_printbase(__int128 n, char *base);
+int	ft_printmemory(va_list ap);
+int	ft_printsigned(va_list ap);
+int	ft_printunsigned(va_list ap);
+int	ft_printhexa_lower(va_list ap);
+int	ft_printhexa_upper(va_list ap);
+int	😋(va_list ap);
 
 #endif /* FT_PRINTF_H */

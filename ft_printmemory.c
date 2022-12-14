@@ -6,21 +6,19 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 08:59:36 by aguyon            #+#    #+#             */
-/*   Updated: 2022/12/14 09:04:19 by aguyon           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:44:14 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printmemory(void *address)
+int	ft_printmemory(va_list ap)
 {
+	void	*address;
+
+	address = va_arg(ap, void *);
 	if (!address)
-		return (ft_printchar("(nil)"));
-	return (ft_printstr("0x") + ft_printbase(((uintptr_t)address), "0123456789abcdef"));
+		return (write(1, "(nil)", 5));
+	return (write(1, "0x", 2)
+		+ ft_printbase((uintptr_t)address, "0123456789abcdef"));
 }
-// int main(void)
-// {
-// 	ft_printmemory(&main);
-// 	printf("\n");
-// 	printf("%p\n", &main);
-// }
