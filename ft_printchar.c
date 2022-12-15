@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 08:25:50 by aguyon            #+#    #+#             */
-/*   Updated: 2022/12/14 15:44:48 by aguyon           ###   ########.fr       */
+/*   Updated: 2022/12/15 10:42:18 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_printchar(va_list ap)
 {
-	int c;
+	int	c;
 
 	c = va_arg(ap, int);
 	return (write(1, &c, 1));
