@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 21:46:23 by aguyon            #+#    #+#             */
-/*   Updated: 2022/12/14 16:38:58 by aguyon           ###   ########.fr       */
+/*   Updated: 2022/12/15 10:37:23 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,21 @@
 int	ft_printf(const char *format, ...)
 {
 	va_list		ap;
+	int			count;
 	const void	*array[] = {&ft_printchar, &ft_printstr,
 		&ft_printmemory, &ft_printsigned, &ft_printsigned, &ft_printunsigned,
-		&ft_printhexa_lower, &ft_printhexa_upper, &😋};
-	char		*str;
-	int			count;
-	char		*conv;
+		&ft_printhexa_lower, &ft_printhexa_upper, &ft_printpourcent};
+	const char	*conv = "cspdiuxX%";
 
 	va_start(ap, format);
-	str = (char *)format;
 	count = 0;
-	conv = "cspdiuxX%";
-	while (*str)
+	while (*format)
 	{
-		if (*str == '%' && ft_strchr(conv, *(str + 1)) && *(str + 1))
-		{
-			count += ((t_fun) array[ft_strchr(conv, *++str) - conv])(ap);
-			str++;
-		}
+		if (*format == '%' && ft_strchr(conv, *(format + 1)) && *(format + 1))
+			count += ((t_fun) array[ft_strchr(conv, *++format) - conv])(ap);
 		else
-			count += write(1, str++, 1);
+			count += write(1, format, 1);
+		format++;
 	}
 	va_end(ap);
 	return (count);
